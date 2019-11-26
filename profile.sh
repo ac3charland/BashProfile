@@ -14,3 +14,4 @@ vlogme () { sh ~/code/projects/NeistatScript/run.sh "$1"; }
 alias desktop='cd ~/Desktop'
 alias documents='cd ~/Documents'
 alias cdcode='cd ~/code'
+alias projects='cd ~/code/projects'
