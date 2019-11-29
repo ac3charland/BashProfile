@@ -15,3 +15,6 @@ alias desktop='cd ~/Desktop'
 alias documents='cd ~/Documents'
 alias cdcode='cd ~/code'
 alias projects='cd ~/code/projects'
+
+#Project Shortcuts
+alias patch-store='cd ~/code/projects/patch-store'
