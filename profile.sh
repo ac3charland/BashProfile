@@ -1,7 +1,11 @@
 #Git Shortcuts
 alias status='git status'
 alias push='git push'
-gcam () { git add . && git commit -m "$1"; }
+alias gcm='git checkout master'
+alias glo='git log --oneline'
+gcam () { git commit -am "$1"; }
+gc () { git checkout "$1"; }
+gcb () { git checkout -b "$1"; }
 
 #General Shortcuts
 alias editBashProfile='nano ~/code/Misc/BashProfile/profile.sh'
