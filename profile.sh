@@ -1,5 +1,6 @@
 #Git Shortcuts
 alias status='git status'
+alias pull='git pull'
 alias push='git push'
 alias gcm='git checkout master'
 alias glo='git log --oneline'
