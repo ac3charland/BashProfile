@@ -19,6 +19,7 @@ alias bs-t='npm run backstop:test'
 alias bs-r='npm run backstop:report'
 alias bs-a='npm run backstop:approve'
 vlogme () { sh ~/code/projects/NeistatScript/run.sh "$1"; }
+txt () { touch ~/Desktop/"$1".txt && open ~/Desktop/"$1".txt; }
 
 #Navigation Shortcuts
 alias desktop='cd ~/Desktop'
