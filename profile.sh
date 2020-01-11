@@ -10,6 +10,9 @@ gc () { git checkout "$1"; }
 gcb () { git checkout -b "$1"; }
 gm () { git merge "$1"; }
 
+#AWS Shortcuts
+alias ap='amplify push'
+
 #General Shortcuts
 alias editBashProfile='nano ~/code/Misc/BashProfile/profile.sh'
 alias ebp='editBashProfile'
