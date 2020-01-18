@@ -32,3 +32,4 @@ alias projects='cd ~/code/projects'
 
 #Project Shortcuts
 alias patch-store='cd ~/code/projects/patch-store'
+alias ewipatches='cd ~/code/projects/ewipatches'
