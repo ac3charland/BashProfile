@@ -22,6 +22,8 @@ alias cdbp='cdBashProfile'
 alias bs-t='npm run backstop:test'
 alias bs-r='npm run backstop:report'
 alias bs-a='npm run backstop:approve'
+alias cy-o='npm run cypress:open'
+alias cy-t='npm run cypress:test'
 vlogme () { sh ~/code/projects/NeistatScript/run.sh "$1"; }
 txt () { touch ~/Desktop/"$1".txt && open ~/Desktop/"$1".txt; }
 
