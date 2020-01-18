@@ -12,6 +12,7 @@ gm () { git merge "$1"; }
 
 #AWS Shortcuts
 alias ap='amplify push'
+alias as='amplify status'
 
 #General Shortcuts
 alias editBashProfile='nano ~/code/Misc/BashProfile/profile.sh'
