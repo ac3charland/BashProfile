@@ -1,3 +1,8 @@
+#Git Autocomplete
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
 #Git Shortcuts
 alias status='git status'
 alias pull='git pull'
