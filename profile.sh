@@ -20,8 +20,11 @@ alias ap='amplify push'
 alias as='amplify status'
 
 #General Shortcuts
+alias ns='npm start'
 alias editBashProfile='nano ~/code/Misc/BashProfile/profile.sh'
 alias ebp='editBashProfile'
+alias refreshBashProfile='source ~/code/Misc/BashProfile/profile.sh'
+alias rbp='refreshBashProfile'
 alias cdBashProfile='cd ~/code/Misc/BashProfile'
 alias cdbp='cdBashProfile'
 alias bs-t='npm run backstop:test'
