@@ -34,6 +34,8 @@ alias cy-o='npm run cypress:open'
 alias cy-t='npm run cypress:test'
 vlogme () { sh ~/code/projects/NeistatScript/run.sh "$1"; }
 txt () { touch ~/Desktop/"$1".txt && open ~/Desktop/"$1".txt; }
+yt () { desktop && youtube-dl "$1"; }
+yt-a () { desktop && youtube-dl --extract-audio --audio-format mp3 "$1"; }
 
 #Navigation Shortcuts
 alias desktop='cd ~/Desktop'
