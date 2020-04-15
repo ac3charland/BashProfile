@@ -3,6 +3,16 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
+#Navigation Shortcuts
+alias desktop='cd ~/Desktop'
+alias documents='cd ~/Documents'
+alias cdcode='cd ~/code'
+alias projects='cd ~/code/projects'
+
+#Project Shortcuts
+alias patch-store='cd ~/code/projects/patch-store'
+alias ewipatches='cd ~/code/projects/ewipatches'
+
 #Git Shortcuts
 alias status='git status'
 alias pull='git pull'
@@ -34,15 +44,5 @@ alias cy-o='npm run cypress:open'
 alias cy-t='npm run cypress:test'
 vlogme () { sh ~/code/projects/NeistatScript/run.sh "$1"; }
 txt () { touch ~/Desktop/"$1".txt && open ~/Desktop/"$1".txt; }
-yt () { desktop && youtube-dl "$1"; }
+yt () { desktop && youtube-dl -f mp4 "$1"; }
 yt-a () { desktop && youtube-dl --extract-audio --audio-format mp3 "$1"; }
-
-#Navigation Shortcuts
-alias desktop='cd ~/Desktop'
-alias documents='cd ~/Documents'
-alias cdcode='cd ~/code'
-alias projects='cd ~/code/projects'
-
-#Project Shortcuts
-alias patch-store='cd ~/code/projects/patch-store'
-alias ewipatches='cd ~/code/projects/ewipatches'
