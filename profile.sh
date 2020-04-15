@@ -12,11 +12,13 @@ alias projects='cd ~/code/projects'
 #Project Shortcuts
 alias patch-store='cd ~/code/projects/patch-store'
 alias ewipatches='cd ~/code/projects/ewipatches'
+alias charlandswed='cd ~/code/projects/CharlandsWedWebsite/'
 
 #Git Shortcuts
 alias status='git status'
 alias pull='git pull'
 alias push='git push'
+alias gb='git branch'
 alias gcm='git checkout master'
 alias gmm='git merge master'
 alias glo='git log --oneline'
