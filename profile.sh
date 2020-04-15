@@ -3,6 +3,12 @@ if [ -f ~/.git-completion.bash ]; then
   . ~/.git-completion.bash
 fi
 
+#Git Prompt
+if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
+    __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
+    source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
+fi
+
 #Navigation Shortcuts
 alias desktop='cd ~/Desktop'
 alias documents='cd ~/Documents'
@@ -32,6 +38,7 @@ alias ap='amplify push'
 alias as='amplify status'
 
 #General Shortcuts
+alias ll='ls -la'
 alias ns='npm start'
 alias editBashProfile='nano ~/code/Misc/BashProfile/profile.sh'
 alias ebp='editBashProfile'
