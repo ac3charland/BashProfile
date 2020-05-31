@@ -52,6 +52,7 @@ alias bs-r='npm run backstop:report'
 alias bs-a='npm run backstop:approve'
 alias cy-o='npm run cypress:open'
 alias cy-t='npm run cypress:test'
+alias yt-u='brew upgrade youtube-dl'
 vlogme () { sh ~/code/projects/NeistatScript/run.sh "$1"; }
 txt () { touch ~/Desktop/"$1".txt && open ~/Desktop/"$1".txt; }
 yt () { desktop && youtube-dl -f mp4 "$1"; }
