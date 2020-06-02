@@ -27,6 +27,7 @@ alias pull='git pull'
 alias push='git push'
 alias gb='git branch'
 alias gcm='git checkout master'
+alias gcd='git checkout development'
 alias gmm='git merge master'
 alias glo='git log --oneline'
 gcam () { git commit -am "$1"; }
