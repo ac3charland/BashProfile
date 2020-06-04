@@ -20,6 +20,7 @@ alias patch-store='cd ~/code/projects/patch-store'
 alias ewipatches='cd ~/code/projects/ewipatches'
 alias charlandswed='cd ~/code/projects/CharlandsWedWebsite/'
 alias portfolio='cd ~/code/projects/react-portfolio-redux/'
+alias tflr='cd ~/code/projects/tflr/'
 
 #Git Shortcuts
 alias status='git status'
