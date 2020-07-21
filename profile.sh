@@ -59,3 +59,7 @@ vlogme () { sh ~/code/projects/NeistatScript/run.sh "$1"; }
 txt () { touch ~/Desktop/"$1".txt && open ~/Desktop/"$1".txt; }
 yt () { desktop && youtube-dl -f mp4 "$1"; }
 yt-a () { desktop && youtube-dl --extract-audio --audio-format mp3 "$1"; }
+
+
+export EDITOR=nano
+export VISUAL="$EDITOR"
