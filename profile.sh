@@ -25,6 +25,7 @@ alias template='cd ~/code/projects/react-template/'
 
 #Git Shortcuts
 alias status='git status'
+alias st='status'
 alias pull='git pull'
 alias push='git push'
 alias gb='git branch'
