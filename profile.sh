@@ -23,6 +23,7 @@ alias portfolio='cd ~/code/projects/react-portfolio-redux/'
 alias tflr='cd ~/code/projects/tflr/'
 alias template='cd ~/code/projects/react-template/'
 alias jacob='cd ~/code/projects/jacob-portfolio/'
+alias mac-setup='cd ~/code/projects/mac-setup-script/'
 
 #Git Shortcuts
 alias status='git status'
