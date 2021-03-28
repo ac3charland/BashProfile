@@ -50,6 +50,7 @@ alias as='amplify status'
 #General Shortcuts
 alias ll='ls -la'
 alias ns='npm start'
+alias sd='npm run develop'   # Strapi run command
 alias go='npm test'
 alias go-bs='npm run test:ci'
 alias editBashProfile='nano ~/code/misc/BashProfile/profile.sh'
