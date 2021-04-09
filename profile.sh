@@ -37,6 +37,7 @@ alias gcm='git checkout master'
 alias gcd='git checkout development'
 alias gmm='git merge master'
 alias glo='git log --oneline'
+alias gld='git log --pretty=format:"%h%x09%an%x09%ad%x09%s"'
 gcam () { git commit -am "$1"; }
 gc () { git checkout "$1"; }
 gcb () { git checkout -b "$1"; }
