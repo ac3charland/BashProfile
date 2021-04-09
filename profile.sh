@@ -43,6 +43,7 @@ gc () { git checkout "$1"; }
 gcb () { git checkout -b "$1"; }
 gm () { git merge "$1"; }
 gbd () { git branch -D "$1"; }
+gd () { git diff "$1"~ "$1"; }
 
 #AWS Shortcuts
 alias ap='amplify push'
