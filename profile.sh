@@ -54,6 +54,8 @@ alias as='amplify status'
 #General Shortcuts
 alias ll='ls -la'
 alias ns='npm start'
+alias nsd='npm start:dev'
+alias us='npm run update-schema'
 alias sd='npm run develop'   # Strapi run command
 alias go='npm test'
 alias go-bs='npm run test:ci'
@@ -75,6 +77,7 @@ txt () { touch ~/Desktop/"$1".txt && open ~/Desktop/"$1".txt; }
 yt () { desktop && youtube-dl -f mp4 "$1"; }
 yt-a () { desktop && youtube-dl --extract-audio --audio-format mp3 "$1"; }
 cra () { npx create-react-app "$1" --use-npm; }
+
 
 export EDITOR=nano
 export VISUAL="$EDITOR"
