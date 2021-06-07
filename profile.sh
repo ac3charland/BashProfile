@@ -28,6 +28,7 @@ alias mac-setup='cd ~/code/projects/mac-setup-script/'
 alias shopping='cd ~/code/projects/react-native-shopping-list/'
 alias nobody='cd ~/code/projects/nobody-cares-about-your-project/'
 alias dka='cd ~/code/projects/dka-app/'
+alias crypto='cd ~/code/projects/crypto-bot/'
 
 #Git Shortcuts
 alias status='git status'
