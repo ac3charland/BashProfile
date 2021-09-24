@@ -12,6 +12,7 @@ fi
 #Navigation Shortcuts
 alias desktop='cd ~/Desktop'
 alias documents='cd ~/docs'
+alias downloads='cd ~/Downloads'
 alias cdcode='cd ~/code'
 alias projects='cd ~/code/projects'
 
