@@ -42,7 +42,7 @@ alias gcd='git checkout development'
 alias gmm='git merge main || git merge master'
 alias glo='git log --oneline'
 alias gld='git log --pretty=format:"%h%x09%an%x09%ad%x09%s"'
-gcam () { git commit -am "$1"; }
+gcam () { git add . && git commit -am "$1"; }
 gc () { git checkout "$1"; }
 gcb () { git checkout -b "$1"; }
 gm () { git merge "$1"; }
@@ -72,9 +72,11 @@ alias bs-r='npm run backstop:report'
 alias bs-a='npm run backstop:approve'
 alias cy-o='npm run cypress:open'
 alias cy-t='npm run cypress:test'
+alias cy-a='npm run cypress:approve'
 alias ngrok='~/.ngrok'
 alias yt-u='brew upgrade youtube-dl'
 alias lorem='cat ~/code/misc/lorem.txt | pbcopy'
+alias kill3000='kill -9 $(lsof -ti:3000)'	# Kill process on port 3000
 vlogme () { cd ~/code/projects/NeistatScript && sh run.sh; }
 txt () { touch ~/Desktop/"$1".txt && open ~/Desktop/"$1".txt; }
 yt () { desktop && youtube-dl -f mp4 "$1"; }
@@ -82,5 +84,7 @@ yt-a () { desktop && youtube-dl --extract-audio --audio-format mp3 "$1"; }
 cra () { npx create-react-app "$1" --use-npm; }
 stringify () { node ~/code/projects/stringify-file "$1" | pbcopy; }
 
+
 export EDITOR=nano
 export VISUAL="$EDITOR"
+export ANDROID_SDK=/Users/alexcharland/Library/Android/sdk
