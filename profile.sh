@@ -10,6 +10,7 @@ alias documents='cd ~/docs'
 alias downloads='cd ~/Downloads'
 alias cdcode='cd ~/code'
 alias projects='cd ~/code/projects'
+alias proj='projects'
 
 #Project Shortcuts
 alias patch-store='cd ~/code/projects/patch-store'
@@ -28,6 +29,7 @@ alias crypto='cd ~/code/projects/crypto-bot/'
 alias ear='cd ~/code/projects/ear-trainer'
 alias earb='cd ~/code/projects/ear-trainer-server'
 alias pyq='open ~/Desktop/python-rudiments-quiz.txt ~/Desktop/python-rudiments-quiz-key.txt'
+alias sound='cd ~/code/projects/sound-spectrum-analyzer'
 
 #Git Shortcuts
 alias nogit='xcode-select --install'
@@ -77,7 +79,11 @@ alias ngrok='~/.ngrok'
 alias yt-u='brew upgrade yt-dlp'
 alias lorem='cat ~/code/misc/lorem.txt | pbcopy'
 alias kill3000='kill -9 $(lsof -ti:3000)'	# Kill process on port 3000
-alias pct='~/code/projects/habit-chart-date-percentage-calc/target/debug/habit-chart-date-percentage-calc'
+alias pct='~/code/projects/habit-chart-date-percentage-calc/target/release/habit-chart-date-percentage-calc'
+alias habit-percent='pct'
+alias print-chart='lp ~/Desktop/habit-tracker.png'
+alias pc='print-chart'
+alias make_thumbnail="~/code/projects/ig_thumbnail_creator/target/release/ig_thumbnail_creator"
 vlogme () { cd ~/code/projects/NeistatScript && sh run.sh; }
 txt () { touch ~/Desktop/"$1".txt && open ~/Desktop/"$1".txt; }
 yt () { desktop && yt-dlp -f mp4 "$1"; }
