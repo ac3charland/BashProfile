@@ -7,3 +7,7 @@ My favorite shortcuts and functions to improve the Terminal experience.
 2. Add the following line at the top of the file, with the path to this repo on your machine filled in
   - `source ~/path/to/this/repo/BashProfile/profile.sh`
 3. Close and restart your terminal and enjoy!
+
+## Project Structure
+
+For configuration that is machine-specific or that wouldn't be appropriate to commit, you can create a `local.sh` file which will be gitignored.

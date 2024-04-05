@@ -1,3 +1,7 @@
+if [ -f "./local.sh" ]; then
+    source "./local.sh"
+fi
+
 #Git Prompt
 if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
     __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
