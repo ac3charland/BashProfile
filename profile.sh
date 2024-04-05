@@ -47,6 +47,9 @@ alias gcd='git checkout development'
 alias gmm='git merge main || git merge master'
 alias glo='git log --oneline'
 alias gld='git log --pretty=format:"%h%x09%an%x09%ad%x09%s"'
+alias gitCheatSheet='open https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index'
+alias gcs='gitCheatSheet'
+alias amend='git add . && git commit --amend'
 function gcam { git add . && git commit -am "$1"; }
 function gc { git checkout "$1"; }
 function gcb { git checkout -b "$1"; }
