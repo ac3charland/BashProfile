@@ -91,6 +91,7 @@ alias habit-percent='pct'
 alias print-chart='lp ~/Desktop/habit-tracker.png'
 alias pc='print-chart'
 alias make_thumbnail="~/code/projects/ig_thumbnail_creator/target/release/ig_thumbnail_creator"
+alias clean-desktop='find ~/Desktop -maxdepth 1 -type f -name "*Screenshot*" -delete && find ~/Desktop -maxdepth 1 -type f -name "*Screen Recording*" -delete'
 vlogme () { cd ~/code/projects/NeistatScript && sh run.sh; }
 txt () { touch ~/Desktop/"$1".txt && open ~/Desktop/"$1".txt; }
 yt () { desktop && yt-dlp -f mp4 "$1"; }
