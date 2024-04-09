@@ -1,5 +1,7 @@
-if [ -f "./local.sh" ]; then
-    source "./local.sh"
+SCRIPT_DIR="$(dirname "$0")"
+LOCAL_PATH="$SCRIPT_DIR/local.sh"
+if [ -f "$LOCAL_PATH" ]; then
+    source "$LOCAL_PATH"
 fi
 
 #Git Prompt
