@@ -52,6 +52,16 @@ alias gld='git log --pretty=format:"%h%x09%an%x09%ad%x09%s"'
 alias gitCheatSheet='open https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index'
 alias gcs='gitCheatSheet'
 alias amend='git add . && git commit --amend'
+alias resolveConflicts='gcam "Merge main into branch & resolve conflicts"'
+alias rc='resolveConflicts'
+function updateWithMain {
+    local CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    gcm
+    git pull
+    git checkout "$CURRENT_BRANCH"
+    gmm
+}
+alias uwm='updateWithMain'
 function gcam { git add . && git commit -am "$1"; }
 function gc { git checkout "$1"; }
 function gcb { git checkout -b "$1"; }
