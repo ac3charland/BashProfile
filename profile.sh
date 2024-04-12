@@ -52,6 +52,7 @@ function updateWithMain {
 }
 alias uwm='updateWithMain'
 function gcam { git add . && git commit -am "$1"; }
+unalias gcamp
 function gcamp { 
     if [ -z "$1" ]; then
         echo "Usage: gcamp <commit_message>"
