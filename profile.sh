@@ -1,15 +1,3 @@
-SCRIPT_DIR="$(dirname "$0")"
-LOCAL_PATH="$SCRIPT_DIR/local.sh"
-if [ -f "$LOCAL_PATH" ]; then
-    source "$LOCAL_PATH"
-fi
-
-#Git Prompt
-if [ -f "/usr/local/opt/bash-git-prompt/share/gitprompt.sh" ]; then
-    __GIT_PROMPT_DIR="/usr/local/opt/bash-git-prompt/share"
-    source "/usr/local/opt/bash-git-prompt/share/gitprompt.sh"
-fi
-
 #Navigation Shortcuts
 alias desktop='cd ~/Desktop'
 alias documents='cd ~/docs'
@@ -54,6 +42,7 @@ alias gcs='gitCheatSheet'
 alias amend='git add . && git commit --amend'
 alias resolveConflicts='gcam "Merge main into branch & resolve conflicts"'
 alias rc='resolveConflicts'
+alias acp='git add . && git commit -am "Forgot to add new untracked files" && git push'
 function updateWithMain {
     local CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
     gcm
@@ -64,7 +53,9 @@ function updateWithMain {
 alias uwm='updateWithMain'
 function gcam { git add . && git commit -am "$1"; }
 function gc { git checkout "$1"; }
-function gcb { git checkout -b "$1"; }
+function gcb { gcm && git pull && git checkout -b "$1"; }
+function gcbn { git checkout -b "$1"; }
+alias gcbc='gcbn'
 function gm { git merge "$1"; }
 function gbd { git branch -D "$1"; }
 function gd { git diff "$1"~ "$1"; }
@@ -111,6 +102,13 @@ yt-a () { desktop && yt-dlp --extract-audio --audio-format mp3 "$1"; }
 cra () { npx create-react-app "$1" --use-npm; }
 stringify () { node ~/code/projects/stringify-file "$1" | pbcopy; }
 
+# If it exists, source local aliases from local.sh
+# Duplicate aliases will default to the version in local.sh 
+SCRIPT_DIR="$(dirname "$0")"
+LOCAL_PATH="$SCRIPT_DIR/local.sh"
+if [ -f "$LOCAL_PATH" ]; then
+    source "$LOCAL_PATH"
+fi
 
 export EDITOR=nano
 export VISUAL="$EDITOR"
