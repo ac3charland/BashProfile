@@ -12,3 +12,13 @@ My favorite shortcuts and functions to improve the Terminal experience.
 ## Project Structure
 
 For configuration that is machine-specific or that wouldn't be appropriate to commit, you can create a `local.sh` file which will be gitignored.
+
+If you'd like to overwrite an alias in `profile.sh` with a function in `local.sh`, you'll need to `unalias` it beforehand:
+
+```
+# local.sh
+unalias push
+function push {
+  ...
+}
+```
