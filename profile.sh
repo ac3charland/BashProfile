@@ -1,3 +1,12 @@
+#Setup
+unalias_if_exists() {
+    for alias_name in "$@"; do
+        if [[ -n $(alias "$alias_name" 2>/dev/null) ]]; then
+            unalias "$alias_name"
+        fi
+    done
+}
+
 #Navigation Shortcuts
 alias desktop='cd ~/Desktop'
 alias documents='cd ~/docs'
@@ -26,6 +35,7 @@ alias pyq='open ~/Desktop/python-rudiments-quiz.txt ~/Desktop/python-rudiments-q
 alias sound='cd ~/code/projects/sound-spectrum-analyzer'
 
 #Git Shortcuts
+unalias_if_exists uwm gcam gcamp gc gcb gcbn gm gbd gd
 alias nogit='xcode-select --install'
 alias status='git status'
 alias st='status'
@@ -52,7 +62,6 @@ function updateWithMain {
 }
 alias uwm='updateWithMain'
 function gcam { git add . && git commit -am "$1"; }
-unalias gcamp
 function gcamp { 
     git add .
     git commit -m "$1"
