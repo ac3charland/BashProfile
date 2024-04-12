@@ -1,11 +1,7 @@
 #Setup
-unalias_if_exists() {
-    for alias_name in "$@"; do
-        if [[ -n $(alias "$alias_name" 2>/dev/null) ]]; then
-            unalias "$alias_name"
-        fi
-    done
-}
+SCRIPT_DIR="$(dirname "$0")"
+UTILS_PATH="$SCRIPT_DIR/utils.sh"
+source "$UTILS_PATH"
 
 #Navigation Shortcuts
 alias desktop='cd ~/Desktop'
@@ -119,7 +115,6 @@ stringify () { node ~/code/projects/stringify-file "$1" | pbcopy; }
 
 # If it exists, source local aliases from local.sh
 # Duplicate aliases will default to the version in local.sh 
-SCRIPT_DIR="$(dirname "$0")"
 LOCAL_PATH="$SCRIPT_DIR/local.sh"
 if [ -f "$LOCAL_PATH" ]; then
     source "$LOCAL_PATH"
