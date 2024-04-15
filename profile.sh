@@ -31,14 +31,15 @@ alias pyq='open ~/Desktop/python-rudiments-quiz.txt ~/Desktop/python-rudiments-q
 alias sound='cd ~/code/projects/sound-spectrum-analyzer'
 
 #Git Shortcuts
-unalias_if_exists uwm gcam gcamp gc gcb gcbn gm gbd gd
+PREV_BRANCH='main'
+unalias_if_exists uwm gcam gcamp gc gcb gcbn gm gbd gd gco gcl
 alias nogit='xcode-select --install'
 alias status='git status'
 alias st='status'
 alias pull='git pull'
 alias push='git push'
 alias gb='git branch'
-alias gcm='git checkout main || git checkout master'
+alias gcm='gco main || gco master'
 alias gcd='git checkout development'
 alias gmm='git merge main || git merge master'
 alias glo='git log --oneline'
@@ -70,6 +71,11 @@ alias gcbc='gcbn'
 function gm { git merge "$1"; }
 function gbd { git branch -D "$1"; }
 function gd { git diff "$1"~ "$1"; }
+function gco {
+    PREV_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+    git checkout "$1"
+}
+function gcl { git checkout "$PREV_BRANCH"; }
 
 #AWS Shortcuts
 alias ap='amplify push'
