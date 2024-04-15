@@ -12,23 +12,8 @@ alias projects='cd ~/code/projects'
 alias proj='projects'
 
 #Project Shortcuts
-alias patch-store='cd ~/code/projects/patch-store'
-alias ewipatches='cd ~/code/projects/ewipatches'
-alias charlandswed='cd ~/code/projects/CharlandsWedWebsite/'
-alias portfolio='cd ~/code/projects/react-portfolio-redux/'
-alias tflr='cd ~/code/projects/tflr/'
 alias template='cd ~/code/projects/react-template/'
-alias jacob='cd ~/code/projects/jacob-portfolio/'
-alias bruce='cd ~/code/projects/bsk-mastersound/'
 alias mac-setup='cd ~/code/projects/mac-setup-script/'
-alias shopping='cd ~/code/projects/react-native-shopping-list/'
-alias nobody='cd ~/code/projects/nobody-cares-about-your-project/'
-alias dka='cd ~/code/projects/dka-app/'
-alias crypto='cd ~/code/projects/crypto-bot/'
-alias ear='cd ~/code/projects/ear-trainer'
-alias earb='cd ~/code/projects/ear-trainer-server'
-alias pyq='open ~/Desktop/python-rudiments-quiz.txt ~/Desktop/python-rudiments-quiz-key.txt'
-alias sound='cd ~/code/projects/sound-spectrum-analyzer'
 
 #Git Shortcuts
 PREV_BRANCH='main'
@@ -106,16 +91,8 @@ alias ngrok='~/.ngrok'
 alias yt-u='brew upgrade yt-dlp'
 alias lorem='cat ~/code/misc/lorem.txt | pbcopy'
 alias kill3000='kill -9 $(lsof -ti:3000)'	# Kill process on port 3000
-alias pct='~/code/projects/habit-chart-date-percentage-calc/target/release/habit-chart-date-percentage-calc'
-alias habit-percent='pct'
-alias print-chart='lp ~/Desktop/habit-tracker.png'
-alias pc='print-chart'
-alias make_thumbnail="~/code/projects/ig_thumbnail_creator/target/release/ig_thumbnail_creator"
 alias clean-desktop='find ~/Desktop -maxdepth 1 -type f -name "*Screenshot*" -delete && find ~/Desktop -maxdepth 1 -type f -name "*Screen Recording*" -delete'
-vlogme () { cd ~/code/projects/NeistatScript && sh run.sh; }
 txt () { touch ~/Desktop/"$1".txt && open ~/Desktop/"$1".txt; }
-yt () { desktop && yt-dlp -f mp4 "$1"; }
-yt-a () { desktop && yt-dlp --extract-audio --audio-format mp3 "$1"; }
 cra () { npx create-react-app "$1" --use-npm; }
 stringify () { node ~/code/projects/stringify-file "$1" | pbcopy; }
 
@@ -128,4 +105,3 @@ fi
 
 export EDITOR=nano
 export VISUAL="$EDITOR"
-export ANDROID_SDK=/Users/alexcharland/Library/Android/sdk
