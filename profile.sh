@@ -60,7 +60,11 @@ function gco {
     PREV_BRANCH=$(git rev-parse --abbrev-ref HEAD)
     git checkout "$1"
 }
-function gcl { git checkout "$PREV_BRANCH"; }
+function gcl { 
+    TMP=$(git rev-parse --abbrev-ref HEAD)
+    git checkout "$PREV_BRANCH"
+    PREV_BRANCH=$TMP 
+}
 
 #AWS Shortcuts
 alias ap='amplify push'
