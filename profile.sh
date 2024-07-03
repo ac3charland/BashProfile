@@ -75,6 +75,7 @@ alias as='amplify status'
 #General Shortcuts
 alias ll='ls -la'
 alias ns='npm start'
+alias ni='npm i'
 alias nsd='npm run start:dev'
 alias us='npm run update-schema'
 alias sd='npm run develop'   # Strapi run command
