@@ -102,6 +102,21 @@ alias clean-desktop='find ~/Desktop -maxdepth 1 -type f -name "*Screenshot*" -de
 txt () { touch ~/Desktop/"$1".txt && open ~/Desktop/"$1".txt; }
 cra () { npx create-react-app "$1" --use-npm; }
 stringify () { node ~/code/projects/stringify-file "$1" | pbcopy; }
+# Requires `brew install jq`
+function npm-downloads {
+    local -A downloads
+
+    for PACKAGE_NAME in "$@"; do
+        WEEKLY_DOWNLOADS=$(curl -s https://api.npmjs.org/downloads/point/last-week/$PACKAGE_NAME | jq '.downloads')
+        downloads[$PACKAGE_NAME]=$WEEKLY_DOWNLOADS
+    done
+
+    for PACKAGE_NAME in ${(o)${(k)downloads:#(|-*)}}; do
+        echo "Weekly downloads for $PACKAGE_NAME: \t${downloads[$PACKAGE_NAME]}"
+    done | sort -t ':' -k2 -nr
+}
+alias npm-d='npm-downloads'
+alias nd='npm-downloads'
 
 # If it exists, source local aliases from local.sh
 # Duplicate aliases will default to the version in local.sh 
