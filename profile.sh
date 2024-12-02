@@ -79,7 +79,7 @@ alias ni='npm i'
 alias nsd='npm run start:dev'
 alias us='npm run update-schema'
 alias sd='npm run develop'   # Strapi run command
-alias go='npm test'
+# alias go='npm test'
 alias go-bs='npm run test:ci'
 alias editBashProfile='code ~/code/misc/BashProfile'
 alias ebp='editBashProfile'
@@ -99,9 +99,14 @@ alias yt-u='brew upgrade yt-dlp'
 alias lorem='cat ~/code/misc/lorem.txt | pbcopy'
 alias kill3000='kill -9 $(lsof -ti:3000)'	# Kill process on port 3000
 alias clean-desktop='find ~/Desktop -maxdepth 1 -type f -name "*Screenshot*" -delete && find ~/Desktop -maxdepth 1 -type f -name "*Screen Recording*" -delete'
+alias scratch='touch ~/Desktop/scratch.txt && open ~/Desktop/scratch.txt'
+alias dscratch='rm ~/Desktop/scratch.txt'
 txt () { touch ~/Desktop/"$1".txt && open ~/Desktop/"$1".txt; }
 cra () { npx create-react-app "$1" --use-npm; }
 stringify () { node ~/code/projects/stringify-file "$1" | pbcopy; }
+wd () { whisper "$1" --language en --fp16 False --output_format txt --output_dir ~/Desktop --model small; }
+alias whisper-default='wd'
+
 # Requires `brew install jq`
 function npm-downloads {
     local -A downloads
@@ -117,6 +122,23 @@ function npm-downloads {
 }
 alias npm-d='npm-downloads'
 alias nd='npm-downloads'
+
+remove_empty_dirs() {
+  if [ -z "$1" ]; then
+    echo "Usage: remove_empty_dirs <directory>"
+    return 1
+  fi
+
+  local target_dir="$1"
+
+  if [ ! -d "$target_dir" ]; then
+    echo "Error: $target_dir is not a valid directory."
+    return 1
+  fi
+
+  find "$target_dir" -type d -empty -delete
+  echo "Empty folders in '$target_dir' have been removed."
+}
 
 # If it exists, source local aliases from local.sh
 # Duplicate aliases will default to the version in local.sh 
