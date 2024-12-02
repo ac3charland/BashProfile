@@ -1,4 +1,5 @@
 #Setup
+DEFAULT_IDE="windsurf"  # Change this to your preferred editor (e.g., "code", "windsurf", etc.)
 SCRIPT_DIR="$(dirname "$0")"
 UTILS_PATH="$SCRIPT_DIR/utils.sh"
 source "$UTILS_PATH"
@@ -81,7 +82,7 @@ alias us='npm run update-schema'
 alias sd='npm run develop'   # Strapi run command
 # alias go='npm test'
 alias go-bs='npm run test:ci'
-alias editBashProfile='code ~/code/misc/BashProfile'
+alias editBashProfile='$DEFAULT_IDE ~/code/misc/BashProfile'
 alias ebp='editBashProfile'
 alias refreshBashProfile='source ~/code/misc/BashProfile/profile.sh'
 alias rbp='refreshBashProfile'
