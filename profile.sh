@@ -74,6 +74,7 @@ alias ap='amplify push'
 alias as='amplify status'
 
 #General Shortcuts
+alias ws='windsurf'
 alias ll='ls -la'
 alias ns='npm start'
 alias ni='npm i'
