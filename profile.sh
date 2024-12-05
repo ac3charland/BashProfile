@@ -104,6 +104,7 @@ alias scratch='touch ~/Desktop/scratch.txt && open ~/Desktop/scratch.txt'
 alias dscratch='rm ~/Desktop/scratch.txt'
 alias regenerate-package-lock='rm -rf node_modules && rm package-lock.json && npm i'
 alias rpl='regenerate-package-lock'
+alias pwdcp='pwd | pbcopy'
 txt () { touch ~/Desktop/"$1".txt && open ~/Desktop/"$1".txt; }
 cra () { npx create-react-app "$1" --use-npm; }
 stringify () { node ~/code/projects/stringify-file "$1" | pbcopy; }
