@@ -83,12 +83,13 @@ alias us='npm run update-schema'
 alias sd='npm run develop'   # Strapi run command
 # alias go='npm test'
 alias go-bs='npm run test:ci'
-alias editBashProfile='$DEFAULT_IDE ~/code/misc/BashProfile'
+alias editBashProfile="$DEFAULT_IDE $SCRIPT_DIR"
 alias ebp='editBashProfile'
-alias refreshBashProfile='source ~/code/misc/BashProfile/profile.sh'
+alias refreshBashProfile="source $SCRIPT_DIR/profile.sh"
 alias rbp='refreshBashProfile'
-alias cdBashProfile='cd ~/code/misc/BashProfile'
+alias cdBashProfile="cd $SCRIPT_DIR"
 alias cdbp='cdBashProfile'
+alias catbp="cat $SCRIPT_DIR/profile.sh"
 alias tuts='open ~/code/notes-and-tutorials'
 alias bs-t='npm run backstop:test'
 alias bs-r='npm run backstop:report'
@@ -144,6 +145,7 @@ remove_empty_dirs() {
   find "$target_dir" -type d -empty -delete
   echo "Empty folders in '$target_dir' have been removed."
 }
+alias clean_empty_folders='remove_empty_dirs'
 
 # If it exists, source local aliases from local.sh
 # Duplicate aliases will default to the version in local.sh 
