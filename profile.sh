@@ -89,7 +89,8 @@ alias refreshBashProfile="source $SCRIPT_DIR/profile.sh"
 alias rbp='refreshBashProfile'
 alias cdBashProfile="cd $SCRIPT_DIR"
 alias cdbp='cdBashProfile'
-alias catbp="cat $SCRIPT_DIR/profile.sh"
+alias catBashProfile="cat $SCRIPT_DIR/profile.sh"
+alias catbp='catBashProfile'
 alias tuts='open ~/code/notes-and-tutorials'
 alias bs-t='npm run backstop:test'
 alias bs-r='npm run backstop:report'
@@ -112,6 +113,8 @@ cra () { npx create-react-app "$1" --use-npm; }
 stringify () { node ~/code/projects/stringify-file "$1" | pbcopy; }
 wd () { whisper "$1" --language en --fp16 False --output_format txt --output_dir ~/Desktop --model small; }
 alias whisper-default='wd'
+catbpg () { catBashProfile | grep "$1"; }
+alias catbps='catbpg'
 
 # Requires `brew install jq`
 function npm-downloads {
