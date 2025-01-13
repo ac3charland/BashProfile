@@ -115,6 +115,7 @@ wd () { whisper "$1" --language en --fp16 False --output_format txt --output_dir
 alias whisper-default='wd'
 catbpg () { catBashProfile | grep "$1"; }
 alias catbps='catbpg'
+alias prd='create_pr_description'
 
 # Requires `brew install jq`
 function npm-downloads {
