@@ -63,7 +63,7 @@ create_pr_description() {
     done
 
     markdown_content+="\n## Ticket\n"
-    markdown_content+="Resolves [$ticket]($url)\n\n"
+    markdown_content+="Resolves AB#$ticket\n\n"
 
     markdown_content+="## Screenshots\n\n"
 

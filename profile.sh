@@ -30,8 +30,6 @@ alias gcd='git checkout development'
 alias gmm='git merge main || git merge master'
 alias glo='git log --oneline'
 alias gld='git log --pretty=format:"%h%x09%an%x09%ad%x09%s"'
-alias gitCheatSheet='open https://kapeli.com/cheat_sheets/Oh-My-Zsh_Git.docset/Contents/Resources/Documents/index'
-alias gcs='gitCheatSheet'
 alias gs='git stash'
 alias gsp='git stash pop'
 alias amend='git add . && git commit --amend'
@@ -69,6 +67,10 @@ function gcl {
     git checkout "$PREV_BRANCH"
     PREV_BRANCH=$TMP 
 }
+function gbg { git branch | grep "$1"; }
+alias gcs='gbg'
+function gbgc { git branch | grep "$1" | pbcopy; }
+alias gcgc='gbgc'
 
 #AWS Shortcuts
 alias ap='amplify push'
