@@ -37,7 +37,8 @@ alias gsp='git stash pop'
 alias amend='git add . && git commit --amend'
 alias resolveConflicts='gcam "Merge main into branch & resolve conflicts"'
 alias rc='resolveConflicts'
-alias acp='git add . && git commit -am "Forgot to add new untracked files" && git push'
+alias cpwd='pwd | pbcopy'
+
 function updateWithMain {
     local CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
     gcm
