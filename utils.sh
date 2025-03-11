@@ -149,6 +149,10 @@ select_from_menu() {
                 MENU_SELECTED_ITEM="${items[$selected+1]}"
                 break
                 ;;
+            q|Q) # Quit
+                MENU_SELECTED_ITEM=""
+                break
+                ;;
         esac
     done
     
