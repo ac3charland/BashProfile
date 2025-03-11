@@ -71,6 +71,20 @@ function gbg { git branch | grep "$1"; }
 alias gcs='gbg'
 function gbgc { git branch | grep "$1" | pbcopy; }
 alias gcgc='gbgc'
+function gcog {
+    local matches=$(git branch | grep "$1")
+    local match_count=$(echo "$matches" | grep -v "^$" | wc -l | tr -d ' ')
+    
+    if [ "$match_count" -eq 0 ]; then
+        echo "No branches match pattern '$1'"
+    elif [ "$match_count" -eq 1 ]; then
+        local branch=$(echo "$matches" | tr -d ' *')
+        git checkout "$branch"
+    else
+        echo "Error: Multiple branches match pattern '$1':"
+        echo "$matches"
+    fi
+}
 
 #AWS Shortcuts
 alias ap='amplify push'
