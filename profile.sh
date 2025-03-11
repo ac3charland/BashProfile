@@ -81,8 +81,29 @@ function gcog {
         local branch=$(echo "$matches" | tr -d ' *')
         git checkout "$branch"
     else
-        echo "Error: Multiple branches match pattern '$1':"
-        echo "$matches"
+        echo "Multiple branches match pattern '$1':"
+        
+        # Convert matches to a clean array for zsh
+        local -a branches
+        while IFS= read -r line; do
+            # Skip empty lines
+            [[ -z "$line" ]] && continue
+            # Trim leading/trailing spaces and asterisk
+            line=$(echo "$line" | sed 's/^[* ]*//' | xargs)
+            # Add to array if non-empty
+            [[ -n "$line" ]] && branches+=($line)
+        done <<< "$matches"
+        
+        # Use the select_from_menu function from utils.sh
+        select_from_menu "Select a branch to checkout:" ${branches[@]}
+        
+        # Checkout the selected branch (MENU_SELECTED_ITEM is set by select_from_menu)
+        if [[ -n "$MENU_SELECTED_ITEM" ]]; then
+            echo "Checking out: $MENU_SELECTED_ITEM"
+            git checkout "$MENU_SELECTED_ITEM"
+        else
+            echo "No branch selected or operation cancelled."
+        fi
     fi
 }
 
