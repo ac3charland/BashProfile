@@ -152,6 +152,7 @@ alias whisper-default='wd'
 catbpg () { catBashProfile | grep "$1"; }
 alias catbps='catbpg'
 alias prd='create_pr_description'
+alias update-fabric='go install github.com/danielmiessler/fabric@latest'
 
 # Requires `brew install jq`
 function npm-downloads {
