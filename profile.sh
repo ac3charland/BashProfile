@@ -79,7 +79,7 @@ function gcog {
         echo "No branches match pattern '$1'"
     elif [ "$match_count" -eq 1 ]; then
         local branch=$(echo "$matches" | tr -d ' *')
-        git checkout "$branch"
+        gco "$branch"
     else
         # Convert matches to a clean array for zsh
         local -a branches
@@ -98,7 +98,7 @@ function gcog {
         # Checkout the selected branch (MENU_SELECTED_ITEM is set by select_from_menu)
         if [[ -n "$MENU_SELECTED_ITEM" ]]; then
             echo "Checking out: $MENU_SELECTED_ITEM"
-            git checkout "$MENU_SELECTED_ITEM"
+            gco "$MENU_SELECTED_ITEM"
         else
             echo "No branch selected."
         fi
