@@ -152,7 +152,37 @@ alias whisper-default='wd'
 catbpg () { catBashProfile | grep "$1"; }
 alias catbps='catbpg'
 alias prd='create_pr_description'
-alias update-fabric='go install github.com/danielmiessler/fabric@latest'
+function update-fabric() {
+    # Install/update fabric
+    echo "Installing/updating fabric..."
+    if ! go install github.com/danielmiessler/fabric@latest; then
+        echo "Error: Failed to install/update fabric. Aborting."
+        return 1
+    fi
+    echo "Fabric successfully updated!"
+    
+    # Check if FABRIC_PATTERNS_PATH environment variable exists
+    if [ -z "${FABRIC_PATTERNS_PATH}" ]; then
+        echo "FABRIC_PATTERNS_PATH is not set. Please add it to local.sh like this:"
+        echo "export FABRIC_PATTERNS_PATH=/path/to/your/fabric/patterns"
+        return 1
+    else
+        # If the path exists, run the copy-patterns.sh script
+        if [ -f "${FABRIC_PATTERNS_PATH}/copy-patterns.sh" ]; then
+            echo "Running copy-patterns.sh script..."
+            if ! sh "${FABRIC_PATTERNS_PATH}/copy-patterns.sh" "$FABRIC_PATTERNS_PATH"; then
+                echo "Error: Failed to execute copy-patterns.sh script."
+                return 1
+            fi
+            echo "Custom patterns successfully copied!"
+        else
+            echo "Warning: ${FABRIC_PATTERNS_PATH}/copy-patterns.sh not found"
+            return 1
+        fi
+    fi
+    
+    return 0
+}
 
 # Requires `brew install jq`
 function npm-downloads {
