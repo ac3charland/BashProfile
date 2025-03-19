@@ -152,6 +152,7 @@ alias whisper-default='wd'
 catbpg () { catBashProfile | grep "$1"; }
 alias catbps='catbpg'
 alias prd='create_pr_description'
+alias patterns="$DEFAULT_IDE $FABRIC_PATTERNS_PATH"
 function update-fabric() {
     # Install/update fabric
     echo "Installing/updating fabric..."
