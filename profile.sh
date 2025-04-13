@@ -135,7 +135,7 @@ alias cy-o='npm run cypress:open'
 alias cy-t='npm run cypress:test'
 alias cy-a='npm run cypress:approve'
 alias ngrok='~/.ngrok'
-alias yt-u='brew upgrade yt-dlp'
+alias yt-u='HOMEBREW_NO_AUTO_UPDATE=1 brew upgrade yt-dlp'
 alias lorem='cat ~/code/misc/lorem.txt | pbcopy'
 alias kill3000='kill -9 $(lsof -ti:3000)'	# Kill process on port 3000
 alias clean-desktop='find ~/Desktop -maxdepth 1 -type f -name "*Screenshot*" -delete && find ~/Desktop -maxdepth 1 -type f -name "*Screen Recording*" -delete'
