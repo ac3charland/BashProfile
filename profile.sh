@@ -122,6 +122,7 @@ alias sd='npm run develop'   # Strapi run command
 alias go-bs='npm run test:ci'
 alias editBashProfile="code $SCRIPT_DIR"
 alias ebp='editBashProfile'
+alias ezsh="code $HOME/.zshrc"
 alias refreshBashProfile="source $SCRIPT_DIR/profile.sh"
 alias rbp='refreshBashProfile'
 alias cdBashProfile="cd $SCRIPT_DIR"
