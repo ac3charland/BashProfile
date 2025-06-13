@@ -191,6 +191,19 @@ function update-fabric() {
     return 0
 }
 
+# Ollama
+DEFAULT_LARGE_MODEL="gemma3:27b"
+DEFAULT_MODEL="gemma3:12b"
+
+ola () {
+  if [ "$1" = "-l" ]; then
+    ollama run $DEFAULT_LARGE_MODEL
+  else
+    ollama run $DEFAULT_MODEL
+  fi
+}
+alias olma=ola
+
 # Requires `brew install jq`
 function npm-downloads {
     local -A downloads
