@@ -4,6 +4,7 @@ SCRIPT_DIR="$(dirname "$0")"
 UTILS_PATH="$SCRIPT_DIR/utils.sh"
 PROJECTS_ROOT="$HOME/code/projects"
 export FABRIC_PATTERNS_PATH="$HOME/.config/fabric/patterns"
+FABRIC_CUSTOM_PATTERNS_PATH="$PROJECTS_ROOT/fabric-custom-patterns"
 source "$UTILS_PATH"
 source_local
 
