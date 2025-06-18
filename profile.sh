@@ -2,6 +2,7 @@
 DEFAULT_IDE="windsurf"  # Overwrite this in local.sh (e.g., "code", "windsurf", etc.)
 SCRIPT_DIR="$(dirname "$0")"
 UTILS_PATH="$SCRIPT_DIR/utils.sh"
+PROJECTS_ROOT="$HOME/code/projects"
 export FABRIC_PATTERNS_PATH="$HOME/.config/fabric/patterns"
 source "$UTILS_PATH"
 source_local
@@ -11,12 +12,12 @@ alias desktop='cd ~/Desktop'
 alias documents='cd ~/docs'
 alias downloads='cd ~/Downloads'
 alias cdcode='cd ~/code'
-alias projects='cd ~/code/projects'
+alias projects="cd $PROJECTS_ROOT"
 alias proj='projects'
 
 #Project Shortcuts
-alias template='cd ~/code/projects/react-template/'
-alias mac-setup='cd ~/code/projects/mac-setup-script/'
+alias template="cd $PROJECTS_ROOT/react-template/"
+alias mac-setup="cd $PROJECTS_ROOT/mac-setup-script/"
 
 #Git Shortcuts
 PREV_BRANCH='main'
@@ -152,7 +153,7 @@ alias rpl='regenerate-package-lock'
 alias pwdcp='pwd | pbcopy'
 txt () { touch ~/Desktop/"$1".txt && open ~/Desktop/"$1".txt; }
 cra () { npx create-react-app "$1" --use-npm; }
-stringify () { node ~/code/projects/stringify-file "$1" | pbcopy; }
+stringify () { node $PROJECTS_ROOT/stringify-file "$1" | pbcopy; }
 wd () { whisper "$1" --language en --fp16 False --output_format txt --output_dir ~/Desktop --model small; }
 alias whisper-default='wd'
 catbpg () { catBashProfile | grep "$1"; }
