@@ -1,9 +1,10 @@
 #Setup
-DEFAULT_IDE="windsurf"  # Change this to your preferred editor (e.g., "code", "windsurf", etc.)
+DEFAULT_IDE="windsurf"  # Overwrite this in local.sh (e.g., "code", "windsurf", etc.)
 SCRIPT_DIR="$(dirname "$0")"
 UTILS_PATH="$SCRIPT_DIR/utils.sh"
 export FABRIC_PATTERNS_PATH="$HOME/.config/fabric/patterns"
 source "$UTILS_PATH"
+source_local
 
 #Navigation Shortcuts
 alias desktop='cd ~/Desktop'
@@ -241,12 +242,7 @@ remove_empty_dirs() {
 }
 alias clean_empty_folders='remove_empty_dirs'
 
-# If it exists, source local aliases from local.sh
-# Duplicate aliases will default to the version in local.sh 
-LOCAL_PATH="$SCRIPT_DIR/local.sh"
-if [ -f "$LOCAL_PATH" ]; then
-    source "$LOCAL_PATH"
-fi
+source_local
 
 export EDITOR=nano
 export VISUAL="$EDITOR"

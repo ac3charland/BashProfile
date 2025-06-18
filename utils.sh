@@ -161,3 +161,12 @@ select_from_menu() {
     tput cnorm
     echo ""
 }
+
+source_local() {
+    # If it exists, source local aliases from local.sh
+    # Duplicate aliases will default to the version in local.sh 
+    LOCAL_PATH="$SCRIPT_DIR/local.sh"
+    if [ -f "$LOCAL_PATH" ]; then
+        source "$LOCAL_PATH"
+    fi
+}
