@@ -164,6 +164,8 @@ alias edit-custom-patterns="$DEFAULT_IDE $FABRIC_CUSTOM_PATTERNS_PATH"
 alias ecp="edit-custom-patterns"
 alias patterns="$DEFAULT_IDE $FABRIC_PATTERNS_PATH"
 alias cdpat="cd $FABRIC_PATTERNS_PATH"
+jina () { curl "https://r.jina.ai/$1" | pbcopy; }
+alias scrape='jina'
 
 function update-fabric() {
     # Install/update fabric
