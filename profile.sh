@@ -15,6 +15,7 @@ alias downloads='cd ~/Downloads'
 alias cdcode='cd ~/code'
 alias projects="cd $PROJECTS_ROOT"
 alias proj='projects'
+alias zshrc='$DEFAULT_IDE $HOME/.zshrc'
 
 #Project Shortcuts
 alias template="cd $PROJECTS_ROOT/react-template/"
@@ -107,6 +108,15 @@ function gcog {
             echo "No branch selected."
         fi
     fi
+}
+
+record () {
+  local file="${1:-$(date +%Y-%m-%d_%H-%M-%S).wav}"
+  local dir="${2:-$RECORDINGS_DIR}"
+
+  mkdir -p "${dir}"
+  echo "Recording to ${dir}/${file}..."
+  ffmpeg -f avfoundation -i ":1" "${dir}/${file}"
 }
 
 #AWS Shortcuts
