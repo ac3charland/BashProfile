@@ -2,6 +2,7 @@
 DEFAULT_IDE="windsurf"  # Overwrite this in local.sh (e.g., "code", "windsurf", etc.)
 SCRIPT_DIR="$(dirname "$0")"
 UTILS_PATH="$SCRIPT_DIR/utils.sh"
+RECORDINGS_DIR="$HOME/Desktop/recordings"
 PROJECTS_ROOT="$HOME/code/projects"
 export FABRIC_PATTERNS_PATH="$HOME/.config/fabric/patterns"
 FABRIC_CUSTOM_PATTERNS_PATH="$PROJECTS_ROOT/fabric-custom-patterns"
@@ -167,6 +168,23 @@ cra () { npx create-react-app "$1" --use-npm; }
 stringify () { node $PROJECTS_ROOT/stringify-file "$1" | pbcopy; }
 wd () { whisper "$1" --language en --fp16 False --output_format txt --output_dir ~/Desktop --model small; }
 alias whisper-default='wd'
+wdo () {
+  local audio="$1"
+  local subdir="$2"
+  local vault="$HOME/Documents/Obsidian Vault/3 - Reference/* Book Notes"
+  local outdir="$vault/$subdir"
+
+  whisper "$audio" \
+    --language en \
+    --fp16 False \
+    --output_format txt \
+    --output_dir "$outdir" \
+    --model small
+
+  local base="${audio##*/}"   # strip path → myfile.wav
+  base="${base%.*}"           # strip ext  → myfile
+  mv -- "$outdir/$base.txt" "$outdir/$base.md"
+}
 catbpg () { catBashProfile | grep "$1"; }
 alias catbps='catbpg'
 alias prd='create_pr_description'
