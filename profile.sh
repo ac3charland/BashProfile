@@ -41,7 +41,6 @@ alias gsp='git stash pop'
 alias amend='git add . && git commit --amend --no-edit'
 alias resolveConflicts='gcam "Merge main into branch & resolve conflicts"'
 alias rc='resolveConflicts'
-alias cpwd='pwd | pbcopy'
 
 function updateWithMain {
     local CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
@@ -273,6 +272,19 @@ remove_empty_dirs() {
   echo "Empty folders in '$target_dir' have been removed."
 }
 alias clean_empty_folders='remove_empty_dirs'
+
+function cpwd() {
+  local res
+
+  if [ "$1" = "-l" ]; then
+    res=$(pwd)
+  else
+    res=$(basename "$PWD")
+  fi
+
+  echo "Copying '$res' to clipboard..."
+  echo "$res" | pbcopy
+}
 
 source_local
 
