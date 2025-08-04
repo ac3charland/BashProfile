@@ -152,6 +152,7 @@ alias cy-a='npm run cypress:approve'
 alias ngrok='~/.ngrok'
 alias yt-u='HOMEBREW_NO_AUTO_UPDATE=1 brew upgrade yt-dlp'
 alias lorem='cat ~/code/misc/lorem.txt | pbcopy'
+alias lsg="ls | grep"
 alias kill3000='kill -9 $(lsof -ti:3000)'	# Kill process on port 3000
 killprocess () { kill -9 $(lsof -ti:$1); }
 alias kp='killprocess'
