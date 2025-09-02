@@ -170,3 +170,7 @@ source_local() {
         source "$LOCAL_PATH"
     fi
 }
+
+print_error() {
+    echo -e "\033[31mERROR: $1\033[0m"
+}
