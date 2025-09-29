@@ -157,7 +157,7 @@ alias kill3000='kill -9 $(lsof -ti:3000)'	# Kill process on port 3000
 killprocess () { kill -9 $(lsof -ti:$1); }
 alias kp='killprocess'
 alias kpp='killprocess'
-alias clean-desktop='find ~/Desktop -maxdepth 1 -type f -name "*Screenshot*" -delete && find ~/Desktop -maxdepth 1 -type f -name "*Screen Recording*" -delete'
+alias clean-desktop='desktop && find . -maxdepth 1 -type f -name "*Screenshot*" -delete && find . -maxdepth 1 -type f -name "*Screen Recording*" -delete'
 alias scratch='touch ~/Desktop/scratch.txt && open ~/Desktop/scratch.txt'
 alias dscratch='rm ~/Desktop/scratch.txt'
 alias regenerate-package-lock='rm -rf node_modules && rm package-lock.json && npm i'
