@@ -174,3 +174,68 @@ source_local() {
 print_error() {
     echo -e "\033[31mERROR: $1\033[0m"
 }
+
+# Create a project shortcut with configurable default behavior
+# Usage: create_project_shortcut "shortcut_name" "full_path" "default_action"
+# default_action can be "cd" (navigate only) or "open" (navigate and open in IDE)
+# This creates a function that supports:
+# - shortcut_name (no args) - performs default action
+# - shortcut_name -N|--cd - navigates to directory
+# - shortcut_name -O|--open - navigates and opens in IDE
+create_project_shortcut() {
+    local shortcut_name="$1"
+    local full_path="$2"
+    local default_action="${3:-cd}"  # Default to "cd" if not specified
+    
+    # Validate inputs
+    if [[ -z "$shortcut_name" || -z "$full_path" ]]; then
+        print_error "create_project_shortcut requires shortcut_name and full_path"
+        return 1
+    fi
+    
+    # Remove any existing alias with the same name
+    unalias_if_exists "$shortcut_name"
+    
+    # Create the function dynamically
+    eval "
+    function $shortcut_name() {
+        local action=\"$default_action\"
+        
+        # Parse arguments
+        case \"\$1\" in
+            -N|--cd)
+                action=\"cd\"
+                ;;
+            -O|--open)
+                action=\"open\"
+                ;;
+            \"\")
+                # No argument, use default action
+                ;;
+            *)
+                print_error \"Unknown flag '\$1'. Use -N/--cd to navigate or -O/--open to navigate and open in IDE\"
+                return 1
+                ;;
+        esac
+        
+        # Navigate to the project directory
+        if [[ ! -d \"$full_path\" ]]; then
+            print_error \"Directory not found: $full_path\"
+            return 1
+        fi
+        
+        cd \"$full_path\"
+        git pull
+        
+        # Open in IDE if requested
+        if [[ \"\$action\" == \"open\" ]]; then
+            if [[ -n \"\$DEFAULT_IDE\" ]]; then
+                \$DEFAULT_IDE .
+            else
+                print_error \"DEFAULT_IDE not set\"
+                return 1
+            fi
+        fi
+    }
+    "
+}

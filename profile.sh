@@ -16,9 +16,15 @@ alias downloads='cd ~/Downloads'
 alias cdcode='cd ~/code'
 alias projects="cd $PROJECTS_ROOT"
 alias proj='projects'
-alias zshrc='$DEFAULT_IDE $HOME/.zshrc'
 
 #Project Shortcuts
+create_project_shortcut "bp" "$SCRIPT_DIR" "open"
+alias editBashProfile="bp"
+alias ebp='editBashProfile'
+alias cdBashProfile="bp -N"
+alias cdbp='cdBashProfile'
+alias ezsh="$DEFAULT_IDE $HOME/.zshrc"
+alias zshrc='ezsh'
 alias template="cd $PROJECTS_ROOT/react-template/"
 alias mac-setup="cd $PROJECTS_ROOT/mac-setup-script/"
 
@@ -133,13 +139,8 @@ alias us='npm run update-schema'
 alias sd='npm run develop'   # Strapi run command
 # alias go='npm test'
 alias go-bs='npm run test:ci'
-alias editBashProfile="code $SCRIPT_DIR"
-alias ebp='editBashProfile'
-alias ezsh="code $HOME/.zshrc"
 alias refreshBashProfile="source $SCRIPT_DIR/profile.sh"
 alias rbp='refreshBashProfile'
-alias cdBashProfile="cd $SCRIPT_DIR"
-alias cdbp='cdBashProfile'
 alias catBashProfile="cat $SCRIPT_DIR/profile.sh"
 alias catbp='catBashProfile'
 alias tuts='open ~/code/notes-and-tutorials'
