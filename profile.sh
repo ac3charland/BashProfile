@@ -56,6 +56,7 @@ function updateWithMain {
     gmm
 }
 alias uwm='updateWithMain'
+function gcnm { git commit -m "$1"; }
 function gcam { git add . && git commit -am "$1"; }
 function gcamp { 
     git add .
