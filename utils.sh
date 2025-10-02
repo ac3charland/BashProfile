@@ -203,10 +203,10 @@ create_project_shortcut() {
         
         # Parse arguments
         case \"\$1\" in
-            -N|--cd)
+            -n|--cd)
                 action=\"cd\"
                 ;;
-            -O|--open)
+            -o|--open)
                 action=\"open\"
                 ;;
             \"\")
