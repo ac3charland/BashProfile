@@ -19,6 +19,7 @@ alias proj='projects'
 
 #Project Shortcuts
 create_project_shortcut "bp" "$SCRIPT_DIR" "open"
+create_project_shortcut "editor-config" "$PROJECTS_ROOT/editor-config" "open"
 alias editBashProfile="bp"
 alias ebp='editBashProfile'
 alias cdBashProfile="bp -N"
