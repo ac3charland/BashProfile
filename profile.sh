@@ -197,6 +197,7 @@ alias patterns="$DEFAULT_IDE $FABRIC_PATTERNS_PATH"
 alias cdpat="cd $FABRIC_PATTERNS_PATH"
 jina () { curl "https://r.jina.ai/$1" | pbcopy; }
 alias scrape='jina'
+alias table='echo "| Header 1 | Header 2 |\n|---|---|\n| Row 1, Column 1 | Row 1, Column 2 |\n| Row 2, Column 1 | Row 2, Column 2 |" | pbcopy'
 
 function update-fabric() {
     # Install/update fabric
