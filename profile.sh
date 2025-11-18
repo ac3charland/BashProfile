@@ -127,6 +127,10 @@ record () {
   ffmpeg -f avfoundation -i ":1" "${dir}/${file}"
 }
 
+wd () { whisper "$1" --language en --fp16 False --output_format txt --output_dir $HOME/Desktop/transcripts --model medium; }
+
+alias wdl='wd "$(ls -t $HOME/Desktop/recordings/ | head -n 1 | xargs -I{} echo $HOME/Desktop/recordings/{})"'
+
 #AWS Shortcuts
 alias ap='amplify push'
 alias as='amplify status'
