@@ -119,8 +119,14 @@ function gcog {
 }
 
 record () {
-  local file="${1:-$(date +%Y-%m-%d_%H-%M-%S).wav}"
+  local name="$1"
   local dir="${2:-$RECORDINGS_DIR}"
+  
+  if [ -z "$name" ]; then
+    local file="$(date +%Y-%m-%d_%H-%M-%S).mp3"
+  else
+    local file="${name}_$(date +%m-%d-%Y).mp3"
+  fi
 
   mkdir -p "${dir}"
   echo "Recording to ${dir}/${file}..."
@@ -296,6 +302,29 @@ function cpwd() {
 
   echo "Copying '$res' to clipboard..."
   echo "$res" | pbcopy
+}
+
+function shrink() {
+  local input="$1"
+
+  if [[ ! -f "$input" ]]; then
+    echo "File not found: $input"
+    return 1
+  fi
+
+  local base="${input%.*}"
+  local ext="${input##*.}"
+  local output="${base}.mp4"
+
+  # Use lower bitrate, scale to half size, and efficient encoding for smaller output
+  ffmpeg -i "$input" -c:v libx264 -preset veryfast -crf 35 -c:a aac -b:a 96k "$output"
+
+  if [[ $? -eq 0 ]]; then
+    echo "Output saved to: $output"
+  else
+    echo "Error processing file."
+    return 1
+  fi
 }
 
 source_local
