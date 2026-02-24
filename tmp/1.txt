@@ -1,4 +1,191 @@
-LDFLAGS="-L$(brew --prefix openssl)/lib" \
-CPPFLAGS="-I$(brew --prefix openssl)/include" \
-PKG_CONFIG_PATH="$(brew --prefix openssl)/lib/pkgconfig" \
-pyenv install 3.11.12
+(whisperx-env)  ~  whisperx ~/Desktop/recordings/1-on-1_02-24-2026.mp3 --model small --device cpu
+/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/pyannote/audio/core/io.py:47: UserWarning: 
+torchcodec is not installed correctly so built-in audio decoding will fail. Solutions are:
+* use audio preloaded in-memory as a {'waveform': (channel, time) torch.Tensor, 'sample_rate': int} dictionary;
+* fix torchcodec installation. Error message was:
+
+Could not load libtorchcodec. Likely causes:
+          1. FFmpeg is not properly installed in your environment. We support
+             versions 4, 5, 6, 7, and 8, and we attempt to load libtorchcodec
+             for each of those versions. Errors for versions not installed on
+             your system are expected; only the error for your installed FFmpeg
+             version is relevant. On Windows, ensure you've installed the
+             "full-shared" version which ships DLLs.
+          2. The PyTorch version (2.8.0) is not compatible with
+             this version of TorchCodec. Refer to the version compatibility
+             table:
+             https://github.com/pytorch/torchcodec?tab=readme-ov-file#installing-torchcodec.
+          3. Another runtime dependency; see exceptions below.
+
+        The following exceptions were raised as we tried to load libtorchcodec:
+        
+[start of libtorchcodec loading traceback]
+FFmpeg version 8:
+Traceback (most recent call last):
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torchcodec/_core/ops.py", line 57, in load_torchcodec_shared_libraries
+    torch.ops.load_library(core_library_path)
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torch/_ops.py", line 1478, in load_library
+    ctypes.CDLL(path)
+  File "/Users/nxa6156/.pyenv/versions/3.11.12/lib/python3.11/ctypes/__init__.py", line 376, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: dlopen(/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torchcodec/libtorchcodec_core8.dylib, 0x0006): Symbol not found: __ZN3c1013MessageLogger6streamEv
+  Referenced from: <8B2C1B8A-B128-3035-BF1E-44861574A688> /Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torchcodec/libtorchcodec_core8.dylib
+  Expected in:     <D1057909-9D16-345A-8B8C-73FA6C3DB62C> /Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torch/lib/libc10.dylib
+
+FFmpeg version 7:
+Traceback (most recent call last):
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torchcodec/_core/ops.py", line 57, in load_torchcodec_shared_libraries
+    torch.ops.load_library(core_library_path)
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torch/_ops.py", line 1478, in load_library
+    ctypes.CDLL(path)
+  File "/Users/nxa6156/.pyenv/versions/3.11.12/lib/python3.11/ctypes/__init__.py", line 376, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: dlopen(/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torchcodec/libtorchcodec_core7.dylib, 0x0006): Library not loaded: @rpath/libavutil.59.dylib
+  Referenced from: <99507B66-07B4-3CCE-BCC8-57E40E869A82> /Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torchcodec/libtorchcodec_core7.dylib
+  Reason: tried: '/opt/homebrew/opt/ffmpeg/lib/libavutil.59.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/ffmpeg/lib/libavutil.59.dylib' (no such file), '/opt/homebrew/opt/ffmpeg/lib/libavutil.59.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/ffmpeg/lib/libavutil.59.dylib' (no such file), '/Users/nxa6156/.pyenv/versions/3.11.12/lib/libavutil.59.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/nxa6156/.pyenv/versions/3.11.12/lib/libavutil.59.dylib' (no such file), '/opt/homebrew/lib/libavutil.59.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libavutil.59.dylib' (no such file), '/Users/nxa6156/.pyenv/versions/3.11.12/lib/libavutil.59.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/nxa6156/.pyenv/versions/3.11.12/lib/libavutil.59.dylib' (no such file), '/opt/homebrew/lib/libavutil.59.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libavutil.59.dylib' (no such file)
+
+FFmpeg version 6:
+Traceback (most recent call last):
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torchcodec/_core/ops.py", line 57, in load_torchcodec_shared_libraries
+    torch.ops.load_library(core_library_path)
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torch/_ops.py", line 1478, in load_library
+    ctypes.CDLL(path)
+  File "/Users/nxa6156/.pyenv/versions/3.11.12/lib/python3.11/ctypes/__init__.py", line 376, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: dlopen(/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torchcodec/libtorchcodec_core6.dylib, 0x0006): Library not loaded: @rpath/libavutil.58.dylib
+  Referenced from: <86639CB1-DD57-3ADF-A6A4-A476231AB716> /Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torchcodec/libtorchcodec_core6.dylib
+  Reason: tried: '/opt/homebrew/opt/ffmpeg/lib/libavutil.58.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/ffmpeg/lib/libavutil.58.dylib' (no such file), '/opt/homebrew/opt/ffmpeg/lib/libavutil.58.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/ffmpeg/lib/libavutil.58.dylib' (no such file), '/Users/nxa6156/.pyenv/versions/3.11.12/lib/libavutil.58.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/nxa6156/.pyenv/versions/3.11.12/lib/libavutil.58.dylib' (no such file), '/opt/homebrew/lib/libavutil.58.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libavutil.58.dylib' (no such file), '/Users/nxa6156/.pyenv/versions/3.11.12/lib/libavutil.58.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/nxa6156/.pyenv/versions/3.11.12/lib/libavutil.58.dylib' (no such file), '/opt/homebrew/lib/libavutil.58.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libavutil.58.dylib' (no such file)
+
+FFmpeg version 5:
+Traceback (most recent call last):
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torchcodec/_core/ops.py", line 57, in load_torchcodec_shared_libraries
+    torch.ops.load_library(core_library_path)
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torch/_ops.py", line 1478, in load_library
+    ctypes.CDLL(path)
+  File "/Users/nxa6156/.pyenv/versions/3.11.12/lib/python3.11/ctypes/__init__.py", line 376, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: dlopen(/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torchcodec/libtorchcodec_core5.dylib, 0x0006): Library not loaded: @rpath/libavutil.57.dylib
+  Referenced from: <78E71A73-4AF9-3A75-B63E-7C6261A7F3ED> /Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torchcodec/libtorchcodec_core5.dylib
+  Reason: tried: '/opt/homebrew/opt/ffmpeg/lib/libavutil.57.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/ffmpeg/lib/libavutil.57.dylib' (no such file), '/opt/homebrew/opt/ffmpeg/lib/libavutil.57.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/ffmpeg/lib/libavutil.57.dylib' (no such file), '/Users/nxa6156/.pyenv/versions/3.11.12/lib/libavutil.57.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/nxa6156/.pyenv/versions/3.11.12/lib/libavutil.57.dylib' (no such file), '/opt/homebrew/lib/libavutil.57.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libavutil.57.dylib' (no such file), '/Users/nxa6156/.pyenv/versions/3.11.12/lib/libavutil.57.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/nxa6156/.pyenv/versions/3.11.12/lib/libavutil.57.dylib' (no such file), '/opt/homebrew/lib/libavutil.57.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libavutil.57.dylib' (no such file)
+
+FFmpeg version 4:
+Traceback (most recent call last):
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torchcodec/_core/ops.py", line 57, in load_torchcodec_shared_libraries
+    torch.ops.load_library(core_library_path)
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torch/_ops.py", line 1478, in load_library
+    ctypes.CDLL(path)
+  File "/Users/nxa6156/.pyenv/versions/3.11.12/lib/python3.11/ctypes/__init__.py", line 376, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: dlopen(/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torchcodec/libtorchcodec_core4.dylib, 0x0006): Library not loaded: @rpath/libavutil.56.dylib
+  Referenced from: <C03ACBF5-D573-300D-B2F6-F4E4DE83E1BE> /Users/nxa6156/whisperx-env/lib/python3.11/site-packages/torchcodec/libtorchcodec_core4.dylib
+  Reason: tried: '/opt/homebrew/opt/ffmpeg/lib/libavutil.56.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/ffmpeg/lib/libavutil.56.dylib' (no such file), '/opt/homebrew/opt/ffmpeg/lib/libavutil.56.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/opt/ffmpeg/lib/libavutil.56.dylib' (no such file), '/Users/nxa6156/.pyenv/versions/3.11.12/lib/libavutil.56.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/nxa6156/.pyenv/versions/3.11.12/lib/libavutil.56.dylib' (no such file), '/opt/homebrew/lib/libavutil.56.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libavutil.56.dylib' (no such file), '/Users/nxa6156/.pyenv/versions/3.11.12/lib/libavutil.56.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/Users/nxa6156/.pyenv/versions/3.11.12/lib/libavutil.56.dylib' (no such file), '/opt/homebrew/lib/libavutil.56.dylib' (no such file), '/System/Volumes/Preboot/Cryptexes/OS/opt/homebrew/lib/libavutil.56.dylib' (no such file)
+[end of libtorchcodec loading traceback].
+  warnings.warn(
+Traceback (most recent call last):
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/urllib3/connection.py", line 796, in connect
+    sock_and_verified = _ssl_wrap_socket_and_match_hostname(
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/urllib3/connection.py", line 975, in _ssl_wrap_socket_and_match_hostname
+    ssl_sock = ssl_wrap_socket(
+               ^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/urllib3/util/ssl_.py", line 483, in ssl_wrap_socket
+    ssl_sock = _ssl_wrap_socket_impl(sock, context, tls_in_tls, server_hostname)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/urllib3/util/ssl_.py", line 527, in _ssl_wrap_socket_impl
+    return ssl_context.wrap_socket(sock, server_hostname=server_hostname)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/.pyenv/versions/3.11.12/lib/python3.11/ssl.py", line 517, in wrap_socket
+    return self.sslsocket_class._create(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/.pyenv/versions/3.11.12/lib/python3.11/ssl.py", line 1104, in _create
+    self.do_handshake()
+  File "/Users/nxa6156/.pyenv/versions/3.11.12/lib/python3.11/ssl.py", line 1382, in do_handshake
+    self._sslobj.do_handshake()
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/urllib3/connectionpool.py", line 488, in _make_request
+    raise new_e
+urllib3.exceptions.SSLError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/requests/adapters.py", line 644, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/urllib3/connectionpool.py", line 841, in urlopen
+    retries = retries.increment(
+              ^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/urllib3/util/retry.py", line 535, in increment
+    raise MaxRetryError(_pool, url, reason) from reason  # type: ignore[arg-type]
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+urllib3.exceptions.MaxRetryError: HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/models/Systran/faster-whisper-small/revision/main (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/nxa6156/whisperx-env/bin/whisperx", line 8, in <module>
+    sys.exit(cli())
+             ^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/whisperx/__main__.py", line 98, in cli
+    transcribe_task(args, parser)
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/whisperx/transcribe.py", line 127, in transcribe_task
+    model = load_model(
+            ^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/whisperx/asr.py", line 339, in load_model
+    model = model or WhisperModel(whisper_arch,
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/faster_whisper/transcribe.py", line 681, in __init__
+    model_path = download_model(
+                 ^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/faster_whisper/utils.py", line 116, in download_model
+    return huggingface_hub.snapshot_download(repo_id, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/huggingface_hub/_snapshot_download.py", line 165, in snapshot_download
+    repo_info = api.repo_info(repo_id=repo_id, repo_type=repo_type, revision=revision)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 2867, in repo_info
+    return method(
+           ^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 2660, in model_info
+    r = get_session().get(path, headers=headers, timeout=timeout, params=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/requests/adapters.py", line 675, in send
+    raise SSLError(e, request=request)
+requests.exceptions.SSLError: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/models/Systran/faster-whisper-small/revision/main (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))"), '(Request ID: cb9a018d-ccf7-4f7e-b929-1a2b31e2286c)')
