@@ -136,6 +136,8 @@ record () {
 wd () { whisper "$1" --language en --fp16 False --output_format txt --output_dir $HOME/Desktop/transcripts --model medium; }
 
 alias wdl='wd "$(ls -t $HOME/Desktop/recordings/ | head -n 1 | xargs -I{} echo $HOME/Desktop/recordings/{})"'
+alias whisperx-env='source ~/whisperx-env/bin/activate'
+alias whisperx='whisperx-env && whisperx'
 
 #AWS Shortcuts
 alias ap='amplify push'
@@ -212,7 +214,7 @@ alias table='echo "| Header 1 | Header 2 |\n|---|---|\n| Row 1, Column 1 | Row 1
 function update-fabric() {
     # Install/update fabric
     echo "Installing/updating fabric..."
-    if ! go install github.com/danielmiessler/fabric@latest; then
+    if ! go install github.com/danielmiessler/fabric/cmd/fabric@latest; then
         echo "Error: Failed to install/update fabric. Aborting."
         return 1
     fi
