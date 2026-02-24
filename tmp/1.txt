@@ -1,21 +1,5 @@
-(whisperx-env)  ✘  ~  echo| openssl s_client -connect huggingface.co:443 2>/dev/null | head -20 
-CONNECTED(00000006)
----
-Certificate chain
- 0 s:CN=huggingface.co, O=Zscaler Inc., OU=Zscaler Inc.
-   i:C=US, ST=California, O=Zscaler Inc., OU=Zscaler Inc., CN=Zscaler Intermediate Root CA (zscaler.net) (t) 
-   a:PKEY: RSA, 2048 (bit); sigalg: sha256WithRSAEncryption
-   v:NotBefore: Feb 24 16:32:44 2026 GMT; NotAfter: Mar  7 05:14:09 2026 GMT
- 1 s:C=US, ST=California, O=Zscaler Inc., OU=Zscaler Inc., CN=Zscaler Intermediate Root CA (zscaler.net) (t) 
-   i:C=US, ST=California, O=Zscaler Inc., OU=Zscaler Inc., CN=Zscaler Intermediate Root CA (zscaler.net), emailAddress=support@zscaler.com
-   a:PKEY: RSA, 2048 (bit); sigalg: sha256WithRSAEncryption
-   v:NotBefore: Feb 21 05:14:09 2026 GMT; NotAfter: Mar  7 05:14:09 2026 GMT
- 2 s:C=US, ST=California, O=Zscaler Inc., OU=Zscaler Inc., CN=Zscaler Intermediate Root CA (zscaler.net), emailAddress=support@zscaler.com
-   i:C=US, ST=California, L=San Jose, O=Zscaler Inc., OU=Zscaler Inc., CN=Zscaler Root CA, emailAddress=support@zscaler.com
-   a:PKEY: RSA, 2048 (bit); sigalg: sha256WithRSAEncryption
-   v:NotBefore: Feb  2 16:38:35 2025 GMT; NotAfter: Jun 10 16:38:35 2052 GMT
----
-Server certificate
------BEGIN CERTIFICATE-----
-MIIEgDCCA2igAwIBAgIQf939vzOUZ/ApcNbItZx2NzANBgkqhkiG9w0BAQsFADCB
-ijELMAkGA1UEBhMCVVMxEzARBgNVBAgMCkNhbGlmb3JuaWExFTATBgNVBAoMDFpz
+# Export the Zscaler root cert
+security find-certificate -a -p /Library/Keychains/System.keychain | awk '/BEGIN/,/END/' > /tmp/zscaler_certs.pem
+
+# Append to certifi's CA bundle
+cat /tmp/zscaler_certs.pem >> $(python -c "import certifi; print(certifi.where())")
