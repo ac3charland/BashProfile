@@ -1,4 +1,4 @@
-(whisperx-env)  ~  whisperx ~/Desktop/recordings/1-on-1_02-24-2026.mp3 --model small --device cpu
+~  whisperx ~/Desktop/recordings/1-on-1_02-24-2026.mp3 --model small --device cpu
 /Users/nxa6156/whisperx-env/lib/python3.11/site-packages/pyannote/audio/core/io.py:47: UserWarning: 
 torchcodec is not installed correctly so built-in audio decoding will fail. Solutions are:
 * use audio preloaded in-memory as a {'waveform': (channel, time) torch.Tensor, 'sample_rate': int} dictionary;
@@ -188,4 +188,4 @@ Traceback (most recent call last):
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
   File "/Users/nxa6156/whisperx-env/lib/python3.11/site-packages/requests/adapters.py", line 675, in send
     raise SSLError(e, request=request)
-requests.exceptions.SSLError: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/models/Systran/faster-whisper-small/revision/main (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))"), '(Request ID: cb9a018d-ccf7-4f7e-b929-1a2b31e2286c)')
+requests.exceptions.SSLError: (MaxRetryError("HTTPSConnectionPool(host='huggingface.co', port=443): Max retries exceeded with url: /api/models/Systran/faster-whisper-small/revision/main (Caused by SSLError(SSLCertVerificationError(1, '[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1016)')))"), '(Request ID: f60472b9-96a1-4d1b-b6a0-bc5a3154663b)')
