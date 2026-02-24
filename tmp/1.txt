@@ -1,4 +1,0 @@
-LDFLAGS="-L$(brew --prefix openssl)/lib" \
-CPPFLAGS="-I$(brew --prefix openssl)/include" \
-PKG_CONFIG_PATH="$(brew --prefix openssl)/lib/pkgconfig" \
-pyenv install 3.11.12
