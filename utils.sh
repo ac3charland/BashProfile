@@ -175,6 +175,43 @@ print_error() {
     echo -e "\033[31mERROR: $1\033[0m"
 }
 
+# Display data as evenly-spaced columns with 4-space separators.
+# Usage: table-display <ncols> "col1" "col2" ... "colN" "col1" ...
+# Column widths are driven by the widest value in each column.
+table-display() {
+    local ncols=$1
+    shift
+    local -a data=("$@")
+    local sep="    "
+    local total=${#data[@]}
+    local -a max_widths
+    local i
+
+    for ((i=1; i<=ncols; i++)); do
+        max_widths[$i]=0
+    done
+
+    local idx
+    for ((idx=1; idx<=total; idx++)); do
+        local col=$(( ((idx-1) % ncols) + 1 ))
+        local len=${#data[$idx]}
+        if ((len > max_widths[col])); then
+            max_widths[$col]=$len
+        fi
+    done
+
+    for ((idx=1; idx<=total; idx++)); do
+        local col=$(( ((idx-1) % ncols) + 1 ))
+        local width=${max_widths[$col]}
+        local item="${data[$idx]}"
+        if ((col < ncols)); then
+            printf "%-${width}s%s" "$item" "$sep"
+        else
+            printf "%s\n" "$item"
+        fi
+    done
+}
+
 # Create a project shortcut with configurable default behavior
 # Usage: create_project_shortcut "shortcut_name" "full_path" "default_action"
 # default_action can be "cd" (navigate only) or "open" (navigate and open in IDE)
