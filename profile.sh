@@ -46,7 +46,7 @@ alias gld='git log --pretty=format:"%h%x09%an%x09%ad%x09%s"'
 alias gs='git stash'
 alias gsp='git stash pop'
 alias amend='git add . && git commit --amend --no-edit'
-alias resolveConflicts='gcam "Merge main into branch & resolve conflicts"'
+alias resolveConflicts='git add . && git rebase --continue'
 alias rc='resolveConflicts'
 
 function updateWithMain {
