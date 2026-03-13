@@ -54,7 +54,7 @@ function updateWithMain {
     gcm
     git pull
     git checkout "$CURRENT_BRANCH"
-    gmm
+    git rebase main || git rebase master
 }
 alias uwm='updateWithMain'
 function gcnm { git commit -m "$1"; }
