@@ -3,6 +3,7 @@ DEFAULT_IDE="windsurf"  # Overwrite this in local.sh (e.g., "code", "windsurf", 
 SCRIPT_DIR="$(dirname "$0")"
 UTILS_PATH="$SCRIPT_DIR/utils.sh"
 RECORDINGS_DIR="$HOME/Desktop/recordings"
+TRANSCRIPTIONS_DIR="$HOME/Desktop/transcripts"
 PROJECTS_ROOT="$HOME/code/projects"
 export FABRIC_PATTERNS_PATH="$HOME/.config/fabric/patterns"
 FABRIC_CUSTOM_PATTERNS_PATH="$PROJECTS_ROOT/fabric-custom-patterns"
@@ -131,11 +132,12 @@ record () {
   mkdir -p "${dir}"
   echo "Recording to ${dir}/${file}..."
   ffmpeg -f avfoundation -i ":1" "${dir}/${file}"
+  wd "${dir}/${file}"
 }
 
-wd () { whisper "$1" --language en --fp16 False --output_format txt --output_dir $HOME/Desktop/transcripts --model medium; }
+wd () { whisper "$1" --language en --fp16 False --output_format txt --output_dir $TRANSCRIPTIONS_DIR --model medium; }
 
-alias wdl='wd "$(ls -t $HOME/Desktop/recordings/ | head -n 1 | xargs -I{} echo $HOME/Desktop/recordings/{})"'
+alias wdl='wd "$(ls -t $RECORDINGS_DIR/ | head -n 1 | xargs -I{} echo $RECORDINGS_DIR/{})"'
 alias whisperx-env='source ~/whisperx-env/bin/activate'
 alias whisperx='whisperx-env && whisperx'
 
@@ -181,7 +183,6 @@ alias pwdcp='pwd | pbcopy'
 txt () { touch ~/Desktop/"$1".txt && open ~/Desktop/"$1".txt; }
 cra () { npx create-react-app "$1" --use-npm; }
 stringify () { node $PROJECTS_ROOT/stringify-file "$1" | pbcopy; }
-wd () { whisper "$1" --language en --fp16 False --output_format txt --output_dir ~/Desktop --model small; }
 alias whisper-default='wd'
 wdo () {
   local audio="$1"
