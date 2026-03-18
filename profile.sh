@@ -119,6 +119,48 @@ function gcog {
     fi
 }
 
+function gitsync() {
+    local -a warnings=()
+
+    for dir in */; do
+        [[ ! -d "$dir/.git" ]] && continue
+
+        local repo="${dir%/}"
+        echo "[$repo] Syncing..."
+
+        pushd "$dir" > /dev/null
+
+        local branch=""
+        if git checkout main 2>/dev/null; then
+            branch="main"
+        elif git checkout master 2>/dev/null; then
+            branch="master"
+        fi
+
+        if [[ -n "$branch" ]]; then
+            git pull || warnings+=("$repo: On '$branch' but 'git pull' failed.")
+        else
+            if git fetch origin main:main 2>/dev/null; then
+                warnings+=("$repo: Uncommitted changes prevent checkout — fetched latest to 'main' without switching branches.")
+            elif git fetch origin master:master 2>/dev/null; then
+                warnings+=("$repo: Uncommitted changes prevent checkout — fetched latest to 'master' without switching branches.")
+            else
+                warnings+=("$repo: Could not checkout or fetch — manual intervention required.")
+            fi
+        fi
+
+        popd > /dev/null
+    done
+
+    if [[ ${#warnings[@]} -gt 0 ]]; then
+        echo "\n⚠️  Warnings:"
+        for w in "${warnings[@]}"; do
+            echo "  - $w"
+        done
+    fi
+}
+alias sgr='sync_git_repos'
+
 record () {
   local name="$1"
   local dir="${2:-$RECORDINGS_DIR}"
