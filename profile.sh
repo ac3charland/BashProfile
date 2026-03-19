@@ -23,7 +23,7 @@ create_project_shortcut "bp" "$SCRIPT_DIR" "open"
 create_project_shortcut "editor-config" "$PROJECTS_ROOT/editor-config" "open"
 alias editBashProfile="bp"
 alias ebp='editBashProfile'
-alias cdBashProfile="bp -N"
+alias cdBashProfile="bp -n"
 alias cdbp='cdBashProfile'
 alias ezsh="$DEFAULT_IDE $HOME/.zshrc"
 alias zshrc='ezsh'
