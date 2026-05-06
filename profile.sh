@@ -183,6 +183,16 @@ alias wdl='wd "$(ls -t $RECORDINGS_DIR/ | head -n 1 | xargs -I{} echo $RECORDING
 alias whisperx-env='source ~/whisperx-env/bin/activate'
 alias whisperx='whisperx-env && whisperx'
 
+mvl() {
+    local latest_file="$(ls -t $HOME/Downloads/ | head -n 1 | xargs -I{} echo $HOME/Downloads/{})"
+    if [ -f "$latest_file" ]; then
+        mv "$latest_file" "$RECORDINGS_DIR/"
+        echo "Moved $latest_file to $RECORDINGS_DIR/"
+    else
+        echo "No file found in $HOME/Downloads"
+    fi
+}
+
 #AWS Shortcuts
 alias ap='amplify push'
 alias as='amplify status'
