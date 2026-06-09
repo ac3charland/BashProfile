@@ -161,6 +161,7 @@ function gitsync() {
 }
 alias sgr='sync_git_repos'
 
+# AI
 record () {
   local name="$1"
   local dir="${2:-$RECORDINGS_DIR}"
@@ -182,6 +183,32 @@ wd () { whisper "$1" --language en --fp16 False --output_format txt --output_dir
 alias wdl='wd "$(ls -t $RECORDINGS_DIR/ | head -n 1 | xargs -I{} echo $RECORDINGS_DIR/{})"'
 alias whisperx-env='source ~/whisperx-env/bin/activate'
 alias whisperx='whisperx-env && whisperx'
+claudey() {
+    local rebuild_flag=""
+    local branch_name=""
+    local other_args=()
+
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            --rebuild|-r)
+                rebuild_flag="--rebuild"
+                ;;
+            -b)
+                shift
+                branch_name="$1"
+                ;;
+            *)
+                other_args+=("$1")
+                ;;
+        esac
+        shift
+    done
+
+    local worktree_args=("--worktree")
+    [[ -n "$branch_name" ]] && worktree_args+=("$branch_name")
+
+    ~/claude-sandbox/run.sh $rebuild_flag "$(pwd)" "${worktree_args[@]}" "${other_args[@]}"
+}
 
 mvl() {
     local latest_file="$(ls -t $HOME/Downloads/ | head -n 1 | xargs -I{} echo $HOME/Downloads/{})"
