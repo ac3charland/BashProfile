@@ -31,7 +31,6 @@ alias template="cd $PROJECTS_ROOT/react-template/"
 alias mac-setup="cd $PROJECTS_ROOT/mac-setup-script/"
 
 #Git Shortcuts
-PREV_BRANCH='main'
 unalias_if_exists uwm gcam gcamp gc gcb gcbn gm gbd gd gco gcl
 alias nogit='xcode-select --install'
 alias status='git status'
@@ -72,15 +71,35 @@ alias gcbc='gcbn'
 function gm { git merge "$1"; }
 function gbd { git branch -D "$1"; }
 function gd { git diff "$1"~ "$1"; }
-function gco {
-    PREV_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-    git checkout "$1"
+gco() {
+  local out current_status wt_path reply
+  out=$(git checkout "$@" 2>&1)
+  current_status=$?
+
+  if [ $current_status -eq 0 ]; then
+    printf '%s\n' "$out"
+    return 0
+  fi
+
+  if printf '%s' "$out" | grep -q "is already checked out at"; then
+    wt_path=$(printf '%s' "$out" | sed -n "s/.*at '\(.*\)'/\1/p")
+    printf '%s\n' "$out" >&2
+    printf 'Remove worktree at %s and retry? [y/N] ' "$wt_path"
+    read -r reply
+    case "$reply" in
+      [yY]|[yY][eE][sS])
+        git worktree remove "$wt_path" && git checkout "$@"
+        ;;
+      *)
+        return $status
+        ;;
+    esac
+  else
+    printf '%s\n' "$out" >&2   # some other failure — pass it through untouched
+    return $status
+  fi
 }
-function gcl { 
-    TMP=$(git rev-parse --abbrev-ref HEAD)
-    git checkout "$PREV_BRANCH"
-    PREV_BRANCH=$TMP 
-}
+alias gcl='git checkout -'
 function gbg { git branch | grep "$1"; }
 alias gcs='gbg'
 function gbgc { git branch | grep "$1" | pbcopy; }
