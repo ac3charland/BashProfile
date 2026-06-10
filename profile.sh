@@ -60,9 +60,7 @@ alias uwm='updateWithMain'
 function gcnm { git commit -m "$1"; }
 function gcam { git add . && git commit -am "$1"; }
 function gcamp { 
-    git add .
-    git commit -m "$1"
-    push
+    git add . && git commit -m "$1" && push
 }
 function gc { git checkout "$1"; }
 function gcb { gcm && git pull && git checkout -b "$1"; }
@@ -331,8 +329,8 @@ ola () {
   fi
 }
 alias olma=ola
-alias olma-ui="docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v ollama-webui:/app/backend/data --name ollama-webui --restart always ghcr.io/ollama-webui/ollama-webui:main"
-alias megpt="docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -e OLLAMA_BASE_URL=http://192.168.1.15:11434 -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main"
+alias olma-ui="docker run -d -p 3100:8080 --add-host=host.docker.internal:host-gateway -v ollama-webui:/app/backend/data --name ollama-webui --restart always ghcr.io/ollama-webui/ollama-webui:main"
+alias megpt="docker run -d -p 3100:8080 --add-host=host.docker.internal:host-gateway -e OLLAMA_BASE_URL=http://192.168.1.15:11434 -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main"
 alias smegpt="docker stop open-webui && docker rm open-webui"
 
 # Requires `brew install jq`
