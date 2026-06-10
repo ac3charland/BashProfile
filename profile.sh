@@ -37,6 +37,7 @@ alias status='git status'
 alias st='status'
 alias pull='git pull'
 alias push='git push'
+alias pushnv='git push --no-verify'
 alias gb='git branch'
 alias gcm='gco main || gco master'
 alias gcd='git checkout development'
@@ -58,10 +59,11 @@ function updateWithMain {
 }
 alias uwm='updateWithMain'
 function gcnm { git commit -m "$1"; }
-function gcam { git add . && git commit -am "$1"; }
-function gcamp { 
-    git add . && git commit -m "$1" && push
-}
+function gcnmnv { git commit -m "$1" --no-verify; }
+function gcam { git add . && gcnm; }
+function gcamnv { git add . && gcnmnv; }
+function gcamp { gcam && push }
+function gcampnv { gcamnv && pushnv }
 function gc { git checkout "$1"; }
 function gcb { gcm && git pull && git checkout -b "$1"; }
 function gcbn { git checkout -b "$1"; }
