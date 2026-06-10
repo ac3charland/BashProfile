@@ -31,7 +31,7 @@ alias template="cd $PROJECTS_ROOT/react-template/"
 alias mac-setup="cd $PROJECTS_ROOT/mac-setup-script/"
 
 #Git Shortcuts
-unalias_if_exists uwm gcam gcamp gc gcb gcbn gm gbd gd gco gcl
+unalias_if_exists uwm gcnm gcnmnv gcam gcamnv gcamp gcampnv gc gcb gcbn gm gbd gd gco gcl
 alias nogit='xcode-select --install'
 alias status='git status'
 alias st='status'
@@ -60,10 +60,10 @@ function updateWithMain {
 alias uwm='updateWithMain'
 function gcnm { git commit -m "$1"; }
 function gcnmnv { git commit -m "$1" --no-verify; }
-function gcam { git add . && gcnm; }
-function gcamnv { git add . && gcnmnv; }
-function gcamp { gcam && push }
-function gcampnv { gcamnv && pushnv }
+function gcam { git add . && gcnm "$1"; }
+function gcamnv { git add . && gcnmnv "$1"; }
+function gcamp { gcam "$1" && push }
+function gcampnv { gcamnv "$1" && pushnv }
 function gc { git checkout "$1"; }
 function gcb { gcm && git pull && git checkout -b "$1"; }
 function gcbn { git checkout -b "$1"; }
