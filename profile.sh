@@ -81,7 +81,18 @@ gco() {
     return 0
   fi
 
-  if printf '%s' "$out" | grep -q "is already checked out at"; then
+  if printf '%s' "$out" | grep -q "pathspec .* did not match any file"; then
+    printf 'Branch not found locally — fetching and retrying...\n'
+    git fetch
+    out=$(git checkout "$@" 2>&1)
+    current_status=$?
+    if [ $current_status -eq 0 ]; then
+      printf '%s\n' "$out"
+      return 0
+    fi
+    printf '%s\n' "$out" >&2
+    return $current_status
+  elif printf '%s' "$out" | grep -q "is already checked out at"; then
     wt_path=$(printf '%s' "$out" | sed -n "s/.*at '\(.*\)'/\1/p")
     printf '%s\n' "$out" >&2
     printf 'Remove worktree at %s and retry? [y/N] ' "$wt_path"
@@ -91,12 +102,12 @@ gco() {
         git worktree remove "$wt_path" && git checkout "$@"
         ;;
       *)
-        return $status
+        return $current_status
         ;;
     esac
   else
     printf '%s\n' "$out" >&2   # some other failure — pass it through untouched
-    return $status
+    return $current_status
   fi
 }
 alias gcl='git checkout -'
